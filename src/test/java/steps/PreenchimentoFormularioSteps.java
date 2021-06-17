@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
@@ -17,6 +18,8 @@ import pages.SampleappFormularioSelectPricePage;
 import pages.SampleappFormularioSendQuotePage;
 import pages.SampleappFormularioVehiclePage;
 
+
+
 public class PreenchimentoFormularioSteps {
 
 	WebDriver driver;
@@ -27,6 +30,7 @@ public class PreenchimentoFormularioSteps {
 	SampleappFormularioSelectPricePage formularioPriceOption;
 	SampleappFormularioSendQuotePage formularioSendQuote;
 	
+		
 	@Before
 	public void setup() {
 		System.setProperty("webdriver.chrome.driver", this.getClass().getResource("/chromedriver.exe").getPath());
@@ -112,5 +116,11 @@ public class PreenchimentoFormularioSteps {
 	public void verifica_a_mensagem_na_tela(String mensagemEsperada) {
 		assertEquals(mensagemEsperada, formularioSendQuote.popupMensagem());
 	}
+	
+	@After
+	public void close() {
+		this.driver.close();
+	}
+	
 
 }
